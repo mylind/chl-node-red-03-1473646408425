@@ -46,14 +46,6 @@ var settings = module.exports = {
     // You can protect the user interface with a userid and password by using the following property
     // the password must be an md5 hash  eg.. 5f4dcc3b5aa765d61d8327deb882cf99 ('password')
     //httpAdminAuth: {user:"admin",pass:"$2a$08$/JsrRGlh372gVBMIs2TnYeY/.nJ7n5C2BUNBTSKIYcqrEJehkNv9."},
-    adminAuth: {
-        type: "credentials",
-        users: [{
-            username: "admin",
-            password: "$2a$08$/JsrRGlh372gVBMIs2TnYeY/.nJ7n5C2BUNBTSKIYcqrEJehkNv9.",
-            permissions: "*"
-        }]
-    },
 
     // Serve up the welcome page
     httpStatic: path.join(__dirname,"public"),
@@ -62,6 +54,9 @@ var settings = module.exports = {
 
     storageModule: require("./couchstorage")
 }
+
+console.log("env_user: " + process.env.NODE_RED_USERNAME);
+console.log("env_pass: " + process.env.NODE_RED_PASSWORD);
 
 if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
     settings.adminAuth = {
@@ -83,6 +78,7 @@ if (process.env.NODE_RED_USERNAME && process.env.NODE_RED_PASSWORD) {
         }
     }
 }
+
 
 settings.couchAppname = process.env.NODE_RED_APPLICATION_NAME || VCAP_APPLICATION['application_name'];
 
