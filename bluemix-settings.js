@@ -25,7 +25,7 @@ var VCAP_SERVICES = JSON.parse(process.env.VCAP_SERVICES);
 
 var settings = module.exports = {
     //uiPort: process.env.VCAP_APP_PORT || 1880,
-    uiPort: 3999,
+    uiPort: 3099,
     mqttReconnectTime: 15000,
     serialReconnectTime: 15000,
     debugMaxLength: 1000,
